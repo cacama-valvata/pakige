@@ -1,8 +1,10 @@
 // Pakige
+use std::fmt;
 
 pub mod deb;
 pub mod rpm;
 
+#[derive(Clone, Copy)]
 pub enum VerOp
 {
     Gt,
@@ -11,6 +13,32 @@ pub enum VerOp
     LtEq,
     Lt
 }
+
+#[derive(Debug)]
+pub enum PakigeParseError
+{
+    EmptyInput,
+    MissingMandatoryField,
+    InvalidFormat,
+    InvalidValue,
+    DuplicateField
+}
+
+impl fmt::Display for PakigeParseError 
+{
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result 
+    {
+        match self {
+            PakigeParseError::EmptyInput => write!(f, "Input is empty."),
+            PakigeParseError::MissingMandatoryField => write!(f, "Input is missing a mandatory field."),
+            PakigeParseError::InvalidFormat => write!(f, "Input is not in a valid format."),
+            PakigeParseError::InvalidValue => write!(f, "A given field has an invalid value."),
+            PakigeParseError::DuplicateField => write!(f, "A given field was present twice in the stanza.")
+        }
+    }
+}
+
+impl std::error::Error for PakigeParseError {}
 
 pub trait Pakige
 {
