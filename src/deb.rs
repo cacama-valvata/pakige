@@ -42,6 +42,14 @@ impl FromStr for BinaryDeb
 
     fn from_str (data: &str) -> Result<Self, Self::Err>
     {
+        // https://man7.org/linux/man-pages/man5/deb822.5.html
+        // The field name
+        // is composed of US-ASCII characters excluding control characters,
+        // space, and colon (i.e., characters in the ranges U+0021 ‘!’
+        // through U+0039 ‘9’, and U+003B ‘;’ through U+007E ‘~’,
+        // inclusive).  Field names must not begin with the comment
+        // character (U+0023 ‘#’), nor with the hyphen character (U+002D
+        // ‘-’).
         let normal_line = Regex::new(r"^[[:space:]]*([[!-9--#---][;-~]][[!-9][;-~]]*)[[:space:]]*:[[:space:]]*(.*)[[:space:]]*$").unwrap();
         let continuation = Regex::new(r"^( .*)$").unwrap();
 
