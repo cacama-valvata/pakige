@@ -1,0 +1,9 @@
+Package: juno-a
+Version: 0.0.1
+Provides: juno-systemaccount
+Depends: juno-randep
+Maintainer: Casey Colley
+Architecture: amd64
+Homepage: https://juno.team
+Description: (Juno) Allows 
+ sudo access without a password

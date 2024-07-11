@@ -1,0 +1,106 @@
+Package: juno-a
+Version: 0.0.1
+Architecture: amd64
+Maintainer: Casey Colley
+Depends: juno-randep
+Provides: juno-systemaccount
+Filename: pool/main/juno-a_0.0.1_amd64.deb
+Size: 532
+MD5sum: fdffd165d16b0dfe3ac8282b808d36df
+SHA1: 81b3d2862a3d331068588c7970c886d8192a7562
+SHA256: a3a956dc7bf7e8500e68c2f48444a7f0e8525bd12628b86218336a0033b02a2c
+Homepage: https://juno.team
+Description: (Juno) Allows sudo access without a password
+
+Package: juno-adep
+Version: 0.0.1
+Architecture: amd64
+Maintainer: Casey Colley
+Provides: juno-randep
+Filename: pool/main/juno-adep_0.0.1_amd64.deb
+Size: 516
+MD5sum: 2c3738a0426d388fdc24e2ebc43ed2fe
+SHA1: 15dac8cb32fe3804cb434d60d81af1cceeae11b9
+SHA256: d05eb04d08bc27e69a3372f2fb8b9eb5787ef0636e827ed38c06c98b5ad13ce8
+Homepage: https://juno.team
+Description: (Juno) Allows sudo access without a password
+
+Package: juno-b
+Version: 0.0.1
+Architecture: amd64
+Maintainer: Casey Colley
+Provides: juno-systemaccount
+Filename: pool/main/juno-b_0.0.1_amd64.deb
+Size: 520
+MD5sum: 7dccc15c630e04a8154e1291df67c192
+SHA1: d60bb78e5f519d35cbb8aaa7cf6281f045e837fb
+SHA256: 8b96c1afafa0503d48b9e1e10a4438ab0932a84144be38b82655c36a75c320bb
+Homepage: https://juno.team
+Description: (Juno) Allows sudo access without a password
+
+Package: juno-c
+Version: 0.0.1
+Architecture: amd64
+Maintainer: Casey Colley
+Depends: juno-notavailable
+Provides: juno-systemaccount
+Filename: pool/main/juno-c_0.0.1_amd64.deb
+Size: 538
+MD5sum: 523b2ef7732c80365f9fc9f59dc283ee
+SHA1: 5be40c08e078d694641d4857876cb7c1b2d90fc1
+SHA256: 8088c2e4d388bf960f236aea2a33782061c297aac4c7a2b517cab222332a91c8
+Homepage: https://juno.team
+Description: (Juno) Allows sudo access without a password
+
+Package: juno-d
+Version: 0.0.1
+Architecture: amd64
+Maintainer: Casey Colley
+Depends: juno-e (= 0.0.1-1)
+Provides: juno-something
+Filename: pool/main/juno-d_0.0.1_amd64.deb
+Size: 536
+MD5sum: ab1228c96b159705684158abb38ff7c0
+SHA1: 480c4551d60f672d316ce2a4c7ced6c6670d8c9a
+SHA256: df1949423d40fd68ba27be5fced816d5d217e7663acfae61485c232e81fce507
+Homepage: https://juno.team
+Description: (Juno) Allows sudo access without a password
+
+Package: juno-e
+Version: 0.0.1-1
+Architecture: amd64
+Maintainer: Casey Colley
+Filename: pool/main/juno-e_0.0.1-1_amd64.deb
+Size: 504
+MD5sum: 93864a05ab2117372eec53543f0e7c76
+SHA1: 4a9dd27e6349f38bafb0eae372c9efcec148bf02
+SHA256: ce3333638a6f4dac393a7fcf6d6d315139d097c8d3c7b76451dfe9008b8a5feb
+Homepage: https://juno.team
+Description: (Juno) Allows sudo access without a password
+
+Package: juno-e
+Version: 0.0.1-2
+Architecture: amd64
+Maintainer: Casey Colley
+Filename: pool/main/juno-e_0.0.1-2_amd64.deb
+Size: 504
+MD5sum: cbdbe59c3c54613e1334c1d3d7f18464
+SHA1: 3f6438bba07e6ca7fa09dbfb3c60c410ad02ab06
+SHA256: 9e98b59d21a014809e55e425d8d5ac90872306de6eca63765b1357d9c48b043d
+Homepage: https://juno.team
+Description: (Juno) Allows sudo access without a password
+
+Package: juno-sudoers-nopasswd
+Version: 0.0.1
+Architecture: amd64
+Maintainer: Casey Colley
+Depends: juno-systemaccount
+Provides: juno-root
+Filename: pool/main/juno-sudoers-nopasswd_0.0.1_amd64.deb
+Size: 540
+MD5sum: 9a1fa7ad8166e69c44c96b0928fd3f24
+SHA1: 8b9f16e308c522fcbf8ea7caba5f4e34dca0de7c
+SHA256: ee72606bce2b064b7219774abd89a2c342ef0028b9b4ff0486a563ff2028eda5
+Homepage: https://juno.team
+Description: (Juno) Allows sudo access without a password
+

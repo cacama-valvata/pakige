@@ -148,54 +148,63 @@ fn binarydeb_essential (mut deb: BinaryDeb) -> Result<BinaryDeb, PakigeParseErro
     };
 }
 
+/* DependsPackageList */
 fn binarydeb_depends (mut deb: BinaryDeb) -> Result<BinaryDeb, PakigeParseError>
 {
     let key = "depends";
     return Ok(deb);
 }
 
+/* DependsPackageList */
 fn binarydeb_recommends (mut deb: BinaryDeb) -> Result<BinaryDeb, PakigeParseError>
 {
     let key = "recommends";
     return Ok(deb);
 }
 
+/* DependsPackageList */
 fn binarydeb_suggests (mut deb: BinaryDeb) -> Result<BinaryDeb, PakigeParseError>
 {
     let key = "suggests";
     return Ok(deb);
 }
 
+/* DependsPackageList */
 fn binarydeb_enhances (mut deb: BinaryDeb) -> Result<BinaryDeb, PakigeParseError>
 {
     let key = "enhances";
     return Ok(deb);
 }
 
+/* DependsPackageList */
 fn binarydeb_pre_depends (mut deb: BinaryDeb) -> Result<BinaryDeb, PakigeParseError>
 {
     let key = "pre-depends";
     return Ok(deb);
 }
 
+/* ProvidesPackageList */
 fn binarydeb_breaks (mut deb: BinaryDeb) -> Result<BinaryDeb, PakigeParseError>
 {
     let key = "breaks";
     return Ok(deb);
 }
 
+/* ProvidesPackageList */
 fn binarydeb_conflicts (mut deb: BinaryDeb) -> Result<BinaryDeb, PakigeParseError>
 {
     let key = "conflicts";
     return Ok(deb);
 }
 
+/* ProvidesPackageList */
 fn binarydeb_provides (mut deb: BinaryDeb) -> Result<BinaryDeb, PakigeParseError>
 {
     let key = "provides";
     return Ok(deb);
 }
 
+/* ProvidesPackageList */
 fn binarydeb_replaces (mut deb: BinaryDeb) -> Result<BinaryDeb, PakigeParseError>
 {
     let key = "replaces";
