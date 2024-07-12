@@ -2,6 +2,8 @@
 name = "pakige"
 version = "0.1.0"
 edition = "2021"
+license = "MIT"
+description = "[UNFINISHED] A library crate to parse various Linux package formats into highly structured data."
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
