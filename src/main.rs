@@ -24,12 +24,12 @@ fn main ()
         Ok(_) => ()
     }
 
-    let hewwo = BinaryDeb::from_str(&s);
-    match hewwo
-    {
-        Ok(_) => (),
-        Err(x) => println!("{}", x)
-    };
+    // let hewwo = BinaryDeb::from_str(&s);
+    // match hewwo
+    // {
+    //     Ok(x) => println!("{}", x.architecture),
+    //     Err(x) => println!("{}", x)
+    // };
     //println!("{}", s);
 
 }

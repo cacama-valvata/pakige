@@ -5,35 +5,38 @@ use std::str::FromStr;
 use regex::Regex;
 
 mod setters;
-use setters::BINARYDEB_SETTERS;
+use setters::{set_package, set_source, set_version, set_section, set_priority,
+              set_architecture, set_essential, set_depends, set_recommends,
+              set_suggests, set_enhances, set_pre_depends, set_breaks, set_conflicts,
+              set_provides, set_replaces, set_installed_size, set_maintainer,
+              set_description, set_homepage, set_built_using, set_multi_arch};
 
 #[derive(Default)]
 pub struct BinaryDeb
 {
-    package: String, /* Mandatory */
-    source: Option<String>,
-    version: String, /* Mandatory */
-    section: Option<String>, /* Recommended */
-    priority: String, /* Recommended */
-    architecture: String, /* Mandatory */
-    essential: bool,
-    depends: Option<DependsPackageList>,
-    recommends: Option<DependsPackageList>,
-    suggests: Option<DependsPackageList>,
-    enhances: Option<DependsPackageList>,
-    pre_depends: Option<DependsPackageList>,
-    breaks: Option<ProvidesPackageList>,
-    conflicts: Option<ProvidesPackageList>,
-    provides: Option<ProvidesPackageList>,
-    replaces: Option<ProvidesPackageList>,
-    installed_size: Option<u64>,
-    maintainer: String, /* Mandatory */
-    description: String, /* Mandatory */
-    homepage: Option<String>,
-    built_using: Option<ProvidesPackageList>,
-    multi_arch: MultiArch,
-    index_fields: Option<BinaryIndexFields>,
-    all_fields: Fields
+    pub package: String, /* Mandatory */
+    pub source: Option<String>,
+    pub version: String, /* Mandatory */
+    pub section: Option<String>, /* Recommended */
+    pub priority: Option<String>, /* Recommended */
+    pub architecture: String, /* Mandatory */
+    pub essential: bool,
+    pub depends: Option<DependsPackageList>,
+    pub recommends: Option<DependsPackageList>,
+    pub suggests: Option<DependsPackageList>,
+    pub enhances: Option<DependsPackageList>,
+    pub pre_depends: Option<DependsPackageList>,
+    pub breaks: Option<ProvidesPackageList>,
+    pub conflicts: Option<ProvidesPackageList>,
+    pub provides: Option<ProvidesPackageList>,
+    pub replaces: Option<ProvidesPackageList>,
+    pub installed_size: Option<u64>,
+    pub maintainer: String, /* Mandatory */
+    pub description: String, /* Mandatory */
+    pub homepage: Option<String>,
+    pub built_using: Option<ProvidesPackageList>,
+    pub multi_arch: MultiArch,
+    pub all_fields: Fields
 }
 
 fn str_to_table (data: &str) -> Result<Fields,PakigeParseError>
@@ -123,15 +126,33 @@ impl FromStr for BinaryDeb
     fn from_str (data: &str) -> Result<Self, Self::Err>
     {
         let mut fields = str_to_table(data)?;
-        let mut deb = BinaryDeb {all_fields: fields, ..Default::default()};
 
-        // for (key, value) in &fields
-        // {
-        //     println!("\"{}\" : \"{}\"", key, value);
-        // }
-
-        deb = BINARYDEB_SETTERS.iter()
-        .try_fold(deb, |deb, field| field(deb))?;
+        let mut deb = BinaryDeb {
+            //all_fields: fields,
+            package: set_package (&fields)?.ok_or (PakigeParseError::MissingMandatoryField)?, /* Mandatory */
+            source: set_source (&fields)?,
+            version: set_version (&fields)?.ok_or (PakigeParseError::MissingMandatoryField)?, /* Mandatory */
+            section: set_section (&fields)?, /* Recommended */
+            priority: set_priority (&fields)?, /* Recommended */
+            architecture: set_architecture (&fields)?.ok_or (PakigeParseError::MissingMandatoryField)?, /* Mandatory */
+            essential: set_essential (&fields)?.unwrap_or (false), // Has default value
+            depends: set_depends (&fields)?,
+            recommends: set_recommends (&fields)?,
+            suggests: set_suggests (&fields)?,
+            enhances: set_enhances (&fields)?,
+            pre_depends: set_pre_depends (&fields)?,
+            breaks: set_breaks (&fields)?,
+            conflicts: set_conflicts (&fields)?,
+            provides: set_provides (&fields)?,
+            replaces: set_replaces (&fields)?,
+            installed_size: set_installed_size (&fields)?,
+            maintainer: set_maintainer (&fields)?.ok_or (PakigeParseError::MissingMandatoryField)?, /* Mandatory */
+            description: set_description (&fields)?.ok_or (PakigeParseError::MissingMandatoryField)?, /* Mandatory */
+            homepage: set_homepage (&fields)?,
+            built_using: set_built_using (&fields)?,
+            multi_arch: set_multi_arch (&fields)?.unwrap_or (MultiArch::No), // Has default value
+            all_fields: fields,
+        };
 
         Ok(deb)
     }
@@ -148,7 +169,7 @@ pub struct BinaryIndexFields
     desc_md5: Option<String>
 }
 
-pub struct PackageIndex(Vec<BinaryDeb>);
+pub struct PackageIndex(Vec<(BinaryDeb, BinaryIndexFields)>); // TODO: would rather this be keyword indexed
 
 // impl From<&str> for PackageIndex
 // {
