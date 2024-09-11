@@ -2,6 +2,8 @@ use std::{collections::HashMap, ops::Mul};
 use crate::PakigeParseError;
 use super::{BinaryDeb, DependsPackageList, Fields, MultiArch, PackageRef, ProvidesPackageList};
 use regex::Regex;
+use deb_version7::DebVersion;
+use std::str::FromStr;
 
 
 static PACKAGENAME_RULES: &str = r"[[:lower:][:digit:]][[:lower:][:digit:][+-.]]+";
@@ -45,16 +47,19 @@ pub fn set_source (fields: &Fields) -> Result<Option<String>, PakigeParseError>
 }
 
 //TODO: create structs, validate syntax of version string
-pub fn set_version (fields: &Fields) -> Result<Option<String>, PakigeParseError>
+pub fn set_version (fields: &Fields) -> Result<Option<DebVersion>, PakigeParseError>
 {
     let key = "version";
 
     let value = match fields.get(key)
     {
-        Some(value) => value.clone(),
+        Some(value) => value,
         None => return Ok(None)
     };
-    return Ok(Some(value));
+
+    let parsed_value = DebVersion::from_str (value)?;
+
+    return Ok(Some(parsed_value));
 }
 
 // TODO: reflect the official list of sections

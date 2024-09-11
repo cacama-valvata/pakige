@@ -38,6 +38,15 @@ impl fmt::Display for PakigeParseError
     }
 }
 
+// TODO: handle different kinds of errors from deb_version?
+impl From<deb_version7::Error> for PakigeParseError
+{
+    fn from (error: deb_version7::Error) -> PakigeParseError
+    {
+        return PakigeParseError::InvalidFormat;
+    }
+}
+
 impl std::error::Error for PakigeParseError {}
 
 pub trait Pakige

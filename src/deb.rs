@@ -2,6 +2,7 @@ use crate::{Pakige, PakigeParseError, VerOp};
 use std::collections::{HashMap, VecDeque};
 use std::hash::Hash;
 use std::str::FromStr;
+use deb_version7::DebVersion;
 use regex::Regex;
 
 mod setters;
@@ -11,12 +12,11 @@ use setters::{set_package, set_source, set_version, set_section, set_priority,
               set_provides, set_replaces, set_installed_size, set_maintainer,
               set_description, set_homepage, set_built_using, set_multi_arch};
 
-#[derive(Default)]
 pub struct BinaryDeb
 {
     pub package: String, /* Mandatory */
     pub source: Option<String>,
-    pub version: String, /* Mandatory */
+    pub version: DebVersion, /* Mandatory */
     pub section: Option<String>, /* Recommended */
     pub priority: Option<String>, /* Recommended */
     pub architecture: String, /* Mandatory */
@@ -191,7 +191,7 @@ pub struct PackageRef
 pub struct VersionRef
 {
     operation: VerOp,
-    version_string: String
+    version_string: DebVersion
 }
 
 /* Depends, Pre-Depends, Recommends, Suggests, Enhances */
